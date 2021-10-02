@@ -49,7 +49,7 @@ plugins=(
 
 # Configure ssh-agent plugin
 zstyle :omz:plugins:ssh-agent agent-forwarding on
-zstyle :omz:plugins:ssh-agent identities id_ed25519
+[[ -f "$HOME/.ssh/id_ed25519" ]] && zstyle :omz:plugins:ssh-agent identities id_ed25519
 #zstyle :omz:plugins:ssh-agent ssh-add-args -c
 
 source $ZSH/oh-my-zsh.sh
@@ -83,9 +83,11 @@ export LANG=en_US.UTF-8
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias vim='nvim'
+[[ $(which nvim) ]] && \
+alias vim='nvim' && \
 alias vimdiff='nvim -d'
-alias wp='wslpath'
+[[ $(which wslpath) ]] && \
+alias wp='wslpath' && \
 alias wx='wslview'
 
 # Fix partial lines showing percent sign on certain emulators
@@ -109,7 +111,5 @@ export CODINGPROJ="/mnt/c/Users/$WSL_HOST_UNAME/Documents/Coding Projects"
 # NVM snippet
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-
 
 
