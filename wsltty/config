@@ -1,0 +1,17 @@
+# To use common configuration in %APPDATA%\mintty, simply remove this file
+ThemeFile=dracula
+CursorType=line
+Transparency=low
+OpaqueWhenFocused=yes
+FontSmoothing=default
+BoldAsColour=no
+Columns=115
+Rows=64
+FontHeight=11
+Font=Roboto Mono for Powerline
+FontWeight=400
+CopyOnSelect=no
+WindowShortcuts=no
+SwitchShortcuts=no
+ZoomShortcuts=no
+Term=xterm-256color
