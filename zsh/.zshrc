@@ -104,9 +104,10 @@ PATH="/usr/local/texlive/2021/bin/x86_64-linux:$PATH"
 
 # Set variables for Windows paths if WSL is detected
 [[ $(grep -i microsoft /proc/version ) ]] && \
-export WSL_HOST_UNAME="$(wslvar USERNAME)" && \
-export DESKTOP="/mnt/c/Users/$WSL_HOST_UNAME/Desktop" && \
-export CODINGPROJ="/mnt/c/Users/$WSL_HOST_UNAME/Documents/Coding Projects"
+export WSL_PROFILE_DIR="$(wslpath "$(wslvar USERPROFILE)")" && \
+export WSL_HOST_UNAME="$(echo $WSL_PROFILE_DIR | rev | cut -d/ -f1 | rev)" && \
+export DESKTOP="$WSL_PROFILE_DIR/Desktop" && \
+export CODINGPROJ="$WSL_PROFILE_DIR/Documents/Coding Projects"
 
 # NVM snippet
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
